@@ -10,3 +10,8 @@ tests/.phpunit.result.cache
 .idea/*
 .vscode
 js/coverage-ts
+
+dist
+node_modules
+vendor
+.github

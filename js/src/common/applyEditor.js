@@ -10,37 +10,11 @@ import ProseMirrorMenu from './components/ProseMirrorMenu';
 import MenuState from './states/MenuState';
 
 export default function applyEditor() {
-  extend(TextEditor.prototype, 'controlItems', function (items) {
-    if (!app.forum.attribute('toggleRichTextEditorButton')) return;
-
-    const buttonOnClick = () => {
-      app.session.user.savePreferences({ useRichTextEditor: !app.session.user.preferences().useRichTextEditor }).then(() => {
-        app.composer.editor.destroy();
-        this.attrs.composer.editor = this.buildEditor(this.$('.TextEditor-editorContainer')[0]);
-        m.redraw.sync();
-        app.composer.editor.focus();
-      });
-    };
-
-    items.add(
-      'rich-text',
-      <Tooltip text={app.translator.trans('askvortsov-rich-text.lib.composer.toggle_button')}>
-        <Button
-          icon="fas fa-pen-fancy"
-          className={classList({ Button: true, 'Button--icon': true, active: app.session.user.preferences().useRichTextEditor })}
-          onclick={buttonOnClick}
-        />
-      </Tooltip>,
-      -10
-    );
-  });
 
   extend(TextEditor.prototype, 'toolbarItems', function (items) {
-    if (!app.session.user.preferences().useRichTextEditor) return;
-
     items.remove('markdown');
-
     items.add('prosemirror-menu', <ProseMirrorMenu state={this.menuState} />, 100);
+    items.add('notice', <span>可使用[color=red]xxx[/color]添加颜色</span>, 0);
   });
 
   extend(TextEditor.prototype, 'buildEditorParams', function (items) {

@@ -1,6 +1,6 @@
 {
     "name": "askvortsov/flarum-rich-text",
-    "description": "Rich Text Editor for Flarum",
+    "description": "六边形用文本编辑器",
     "keywords": [
         "flarum"
     ],
@@ -19,6 +19,11 @@
         {
             "name": "Alexander Skvortsov",
             "email": "askvortsov@flarum.org",
+            "role": "Developer"
+        },
+        {
+            "name": "Lawaxi",
+            "email": "lawaxilawaxi@gmail.com",
             "role": "Developer"
         }
     ],
